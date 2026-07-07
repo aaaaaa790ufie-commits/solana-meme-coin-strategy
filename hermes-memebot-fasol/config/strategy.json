@@ -19,8 +19,18 @@
     "max_token_age_hours": 72,
     "require_migrated": true,
     "shortlist_limit": 5,
-    "cycle_minutes": 20,
     "max_heavy_calls_per_cycle": 1
+  },
+  "cadence": {
+    "$comment": "Двухуровневый цикл. watch_tick — лёгкий (SSE-стрим или один live_trades), full_cycle — тяжёлый (snapshot/scan + полный vet). Ежеминутный full cycle запрещён: забьёт heavy tier (5 rpm) и контекст агента.",
+    "watch_tick_minutes": 3,
+    "full_cycle_minutes": 20,
+    "prefer_sse_stream": true,
+    "sse_endpoint": "tracked_wallet_trade_stream",
+    "hot_signal_triggers_full_vet": true,
+    "hot_signal_min_tracked_buyers": 2,
+    "hot_signal_window_minutes": 15,
+    "report_only_on_events": true
   },
   "smart_flow": {
     "tracked_wallets_target": 15,
