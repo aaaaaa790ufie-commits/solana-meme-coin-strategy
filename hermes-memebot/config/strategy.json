@@ -1,0 +1,51 @@
+{
+  "$comment": "Все параметры стратегии Smart Money Momentum. Агент читает этот файл в начале каждой сессии. Меняй значения здесь, а не в промптах.",
+  "chain": "sol",
+  "budget": {
+    "total_sol": 0.1,
+    "reserve_sol": 0.05
+  },
+  "position": {
+    "size_sol": 0.025,
+    "max_concurrent": 2,
+    "max_entries_per_day": 4,
+    "slippage_cap_pct": 3
+  },
+  "scan": {
+    "intervals": ["1h", "5m"],
+    "min_liquidity_usd": 30000,
+    "max_token_age_hours": 72,
+    "min_smart_degen_count": 3,
+    "trending_limit": 30,
+    "cycle_minutes": 20
+  },
+  "filters": {
+    "max_rug_ratio": 0.3,
+    "require_graduated": true,
+    "max_rat_trader_amount_rate": 0.15,
+    "max_bundler_trader_amount_rate": 0.2,
+    "max_suspected_insider_hold_rate": 0.2,
+    "max_top10_holder_pct": 30,
+    "max_dev_hold_pct": 5,
+    "max_1h_pump_pct": 400,
+    "require_smart_money_net_buying_1h": true
+  },
+  "exits": {
+    "take_profit_pct": 80,
+    "take_profit_sell_portion_pct": 50,
+    "trailing_stop_pct": 25,
+    "trailing_stop_tightened_pct": 15,
+    "tighten_trigger_gain_pct": 50,
+    "time_stop_hours": 12,
+    "time_stop_flat_range_pct": [-10, 15]
+  },
+  "risk": {
+    "hard_stop_balance_sol": 0.07,
+    "max_realized_losses_per_day": 2,
+    "weekly_review_min_trades": 20
+  },
+  "scaling": [
+    { "min_balance_sol": 0.15, "size_sol": 0.03, "max_concurrent": 3 },
+    { "min_balance_sol": 0.25, "size_pct_of_balance": 4.5, "min_reserve_pct": 40 }
+  ]
+}
